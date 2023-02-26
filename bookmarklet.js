@@ -3,6 +3,7 @@ b.textContent = "Recommend local food!";
 b.id = "recommend-food-btn";
 b.style.display = "block";
 b.style.margin = "0 auto";
+b.style.textDecoration = "underline";
 document.querySelector("form").insertAdjacentElement("afterend", b);
 
 b.addEventListener("click", function() {

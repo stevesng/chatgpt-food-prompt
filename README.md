@@ -2,7 +2,7 @@
 
 This bookmarklet adds a button below the textbox on the ChatGPT conversation page. Clicking the button will get current location of the device and prompt ChatGPT for local food recommendation based on the location.
 
-Initially thought of as a Chrome extension to demostrate how ChatGPT can be customized for own application, it is later converted into a bookmarklet for it to work on iOS devices (as Chrome on iOS does not allow extension).
+Initially thought of as a Chrome extension to demonstrate how ChatGPT can be customized for own application, it is later converted into a bookmarklet for it to work on iOS devices (as Chrome on iOS does not allow extension).
 
 This bookmarklet is ccreated partially by ChatGPT.
 
@@ -10,7 +10,7 @@ This bookmarklet is ccreated partially by ChatGPT.
 1. Create a bookmark for any page
 2. Edit the bookmark and replace it's URL with the following minifed version of [bookmarklet.js](https://github.com/stevesng/chatgpt-food-prompt/blob/main/bookmarklet.js)
 ```
-javascript:(function(){var b=document.createElement("button");b.textContent="Recommend local food!",b.id="recommend-food-btn",b.style.display="block",b.style.margin="0 auto",document.querySelector("form").insertAdjacentElement("afterend",b),b.addEventListener("click",function(){navigator.geolocation?navigator.geolocation.getCurrentPosition(function(o){fetch("https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat="+o.coords.latitude+"&lon="+o.coords.longitude).then(o=>o.json()).then(function(o){let e=o.address.country,t=o.address.city,n=o.address.suburb,a=document.querySelector("form"),r=a.querySelector("textarea");var i="I am in "+n+", "+t+", "+e+". Recommend a local food with information in the following format:\n";i+="- Name of food in English\n",i+="- Link to Google Maps https://www.google.com/maps/search/?api=1&query=FOOD_NAME where FOOD_NAME is name of food\n",i+="- Name of food in native language\n",i+="- Link to Google Maps https://www.google.com/maps/search/?api=1&query=FOOD_NAME where FOOD_NAME is name of food in native language\n",r.value=i;let l=a.querySelector("button");l.click()}).catch(function(o){alert(o)})}):alert("Geolocation is not supported by this browser.")})})();
+javascript:(function(){var b=document.createElement("button");b.textContent="Recommend local food!",b.id="recommend-food-btn",b.style.display="block",b.style.margin="0 auto",b.style.textDecoration="underline",document.querySelector("form").insertAdjacentElement("afterend",b),b.addEventListener("click",function(){navigator.geolocation?navigator.geolocation.getCurrentPosition(function(o){fetch("https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat="+o.coords.latitude+"&lon="+o.coords.longitude).then(o=>o.json()).then(function(o){let e=o.address.country,t=o.address.city,n=o.address.suburb,a=document.querySelector("form"),r=a.querySelector("textarea");var i="I am in "+n+", "+t+", "+e+". Recommend a local food with information in the following format:\n";i+="- Name of food in English\n",i+="- Link to Google Maps https://www.google.com/maps/search/?api=1&query=FOOD_NAME where FOOD_NAME is name of food\n",i+="- Name of food in native language\n",i+="- Link to Google Maps https://www.google.com/maps/search/?api=1&query=FOOD_NAME where FOOD_NAME is name of food in native language\n",r.value=i;let l=a.querySelector("button");l.click()}).catch(function(o){alert(o)})}):alert("Geolocation is not supported by this browser.")})})();
 ```
 
 ## Usage
